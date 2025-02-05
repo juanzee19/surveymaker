@@ -1,35 +1,37 @@
 import './creation_&_edition_menu.css';
 import { useNavigate } from 'react-router-dom';
 import SurveyItem from './survey_item';  // Importa el nuevo componente
-import { useState } from 'react'; 
-
+import { useState } from 'react';
 
 function CreateSurvey() {
   const navigate = useNavigate();
 
-   // Estado para la lista de items
-   const [items, setItems] = useState([]);
-  
-   // Función para agregar un nuevo item a la lista
-   const handleAddItem = () => {
-     setItems([
-       ...items,
-       { id: items.length + 1, text: '' } // Agrega un nuevo item vacío
-     ]);
-   };
- 
-   // Función para manejar cambios en el input de cada item
-   const handleInputChange = (id, value) => {
-     setItems(items.map(item =>
-       item.id === id ? { ...item, text: value } : item
-     ));
-   };
-  
+  // Estado para la lista de items
+  const [items, setItems] = useState([]);
 
-    return (
-      <>
-    
-    <section className="box__father">
+  // Función para agregar un nuevo item a la lista
+  const handleAddItem = () => {
+    setItems([
+      ...items,
+      { id: items.length + 1, text: '' } // Agrega un nuevo item vacío
+    ]);
+  };
+
+  // Función para manejar cambios en el input de cada item
+  const handleInputChange = (id, value) => {
+    setItems(items.map(item =>
+      item.id === id ? { ...item, text: value } : item
+    ));
+  };
+
+  // Función para eliminar un item
+  const handleRemoveItem = (id) => {
+    setItems(items.filter(item => item.id !== id)); // Filtra el item con el id dado
+  };
+
+  return (
+    <>
+      <section className="box__father">
         <div className="box-white">
           <input
             type="text"
@@ -52,11 +54,12 @@ function CreateSurvey() {
                   <SurveyItem
                     key={item.id}
                     item={item}
-                    onInputChange={handleInputChange} // Pasa la función como prop
+                    onInputChange={handleInputChange} // Pasa la función de cambio como prop
+                    onRemoveItem={handleRemoveItem}   // Pasa la función de eliminar como prop
                   />
                 ))}
               </ol>
-              
+
               <div className="set__time">
                 <svg
                   className="watch"

@@ -1,21 +1,24 @@
-// SurveyItem.js
+
 import React from 'react';
 
-function SurveyItem({ item, onInputChange }) {
-  // Función para manejar los cambios en el input
-  const handleInputChange = (e) => {
-    onInputChange(item.id, e.target.value);
+function SurveyItem({ item, onInputChange, onRemoveItem }) {
+  const handleChange = (event) => {
+    onInputChange(item.id, event.target.value);
   };
 
   return (
-    <li className="item__survey">
+    <li className="survey-item">
       <input
-        className="input__li"
         type="text"
         value={item.text}
-        onChange={handleInputChange}
+        onChange={handleChange}
+        placeholder="Enter item text"
+        className='input__li'
       />
-      <button className="quit__item">
+      <button
+        className="quit-item"
+        onClick={() => onRemoveItem(item.id)}  // Llama a la función de eliminación
+      >
         x
       </button>
     </li>
