@@ -25,6 +25,12 @@
   /*-------------------*/
   /* click para crear */
   /*-------------------*/
+
+  div.items__and__buttons{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
   
   .edit__survey__name{
     all: unset;
@@ -39,7 +45,7 @@
   
  
 
-  .create__new{
+   button.create__new{
     background-color:rgb(220, 180, 218) ;
     width: 27vw;
     border: solid 15px #F3EDF7;
@@ -63,14 +69,14 @@
   /*surveys items*/
   /*-------------------*/
   
-  .created__surveys{
+  ol.created__surveys{
     display: flex;
     flex-direction: column;
     width: 27vw;
     list-style:none; 
   }
   
-  .item__survey{
+  li.item__survey{
     display: flex;
     justify-content: space-between;
     background-color: rgb(220, 180, 218);
@@ -78,13 +84,21 @@
     box-shadow:1px 1px 4px rgb(81, 80, 80) ;  
     
   }
-  .quit__item{
+  button.quit__item{
+    width: 10px;
     background: none;
     border: none;
-   
     font-size: 16px;
     cursor: pointer;
+    
   
+  }
+
+  button.quit__item:hover{
+    background-color:rgb(118, 98, 117) ;
+    width:20px;
+    height: 50px;
+    
   }
   /*-------------------*/
   /*surveys items*/
@@ -102,8 +116,8 @@
     align-items: center;
     background-color: #F3EDF7;
     border-radius: 20px;
-    
     top: 80%;
+    margin-bottom: 10px;
     box-shadow:1px 1px 4px rgb(81, 80, 80) ;
   }
   .set__time:hover{
