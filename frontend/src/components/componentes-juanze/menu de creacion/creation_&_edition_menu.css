@@ -1,0 +1,198 @@
+
+
+body{
+    margin: auto;
+    background-color: #DDD5DF;
+    font-family:sans-serif ;
+  }
+  /*-------------------*/
+  /* caja popup blanca */
+  /*-------------------*/
+ 
+  
+  
+  .box-white{
+    background-color:#ffffff ;
+    width: 80vw;
+    height: 80vh;
+    border-radius: 20px;
+  }
+  .main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  
+  }
+  /*-------------------*/
+  /* caja popup blanca */
+  /*-------------------*/
+  
+  /*-------------------*/
+  /* click para crear */
+  /*-------------------*/
+  
+  .edit__survey__name{
+    all: unset;
+    width: 90%;
+    margin-top: 1vh;
+    margin-left: 4vw;
+    margin-bottom: 1vh;
+    font-size: 30px;
+    border-bottom:2px solid rgb(197, 197, 197);
+    border-radius:5px ;
+  }
+  
+  .items__and__buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0;
+    }
+    
+    
+  
+  
+  
+  
+  
+  .create__new{
+    background-color:rgb(220, 180, 218) ;
+    width: 27vw;
+    padding: 10px;
+    border: solid 15px #F3EDF7;
+    border-radius: 16px;
+    transition: all 1s ease;
+    box-shadow:1px 1px 4px rgb(81, 80, 80) ;
+    
+  }
+  .create__new:hover{
+    cursor: pointer;
+    border: solid 15px rgb(220, 180, 218) ;
+    background-color:#F3EDF7;
+    
+  }
+  
+  /*-------------------*/
+  /* click para crear */
+  /*-------------------*/
+  
+  /*-------------------*/
+  /*surveys items*/
+  /*-------------------*/
+  
+  .created__surveys{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 27vw;
+    padding: 15px 0 15px 0 ;
+    list-style:none;
+    
+    
+    
+  }
+  
+  .item__survey{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(220, 180, 218);
+    border-radius: 5px;
+    box-shadow:1px 1px 4px rgb(81, 80, 80) ;
+    
+  }
+  .quit__item{
+    background: none;
+    border: none;
+    color:rgb(40, 40, 40);
+    font-size: 16px;
+    cursor: pointer;
+  
+  }
+  /*-------------------*/
+  /*surveys items*/
+  /*-------------------*/
+  
+  
+  /*-------------------*/
+  /*set time*/
+  /*-------------------*/
+  
+  .set__time{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F3EDF7;
+    border-radius: 20px;
+    position: absolute;
+    top: 80%;
+    box-shadow:1px 1px 4px rgb(81, 80, 80) ;
+  }
+  .set__time:hover{
+    cursor: pointer;
+  }
+  .watch{
+    flex-grow: 1;
+  }
+  .p__time{
+    flex-grow: 1;
+  }
+  .flecha{
+    flex-grow: 1;
+  }
+  
+  
+  
+  /*-------------------*/
+  /*separador*/
+  /*-------------------*/
+  
+  .separador{
+    background-color: rgb(197, 197, 197);
+    width: 2px;
+    border-radius: 30px;
+    height: 70vh;
+  }
+  
+  input{
+  
+    cursor: pointer;
+  }
+  /*-------------------*/
+  /*visibilidad*/
+  /*-------------------*/
+  .visibilidad{
+    
+    height:fit-content;
+    background-color: #F3EDF7;
+    border-radius:22px; 
+    box-shadow:1px 1px 4px rgb(81, 80, 80) ;
+  }
+  .title__vi{
+    padding:0 0 0 10px;
+    text-decoration: underline;
+    color: rgb(58, 57, 58);
+  }
+  .visi__p{
+    padding:0 0 0 0px;
+   
+  }
+  .visibilidad__list{
+    margin: 0;
+    padding:0 0 0 10px;
+    
+    
+    
+  }
+  
+  .visibilidad__item{
+    display: flex;
+    justify-content: space-between; 
+    border-radius: 5px;
+    width: 27vw;
+    padding:15px 0 15px 0;
+    margin-bottom: 10px;
+    box-shadow: 0px 1px rgb(220, 180, 218); 
+  }
+  

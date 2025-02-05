@@ -1,0 +1,82 @@
+@SurveyMaker.API_HostAddress = https://localhost:7113
+@AccessToken = CfDJ8JUBxV25kDJMmtwQ-sf6sbRWplMpzhOaB9cCu3lLYsA0djd0sQZ_CGUL97UwWFBU17y57WrSR23lhCHoIPENjvcaBjX6zlUP6CJvM6lkD2F3Hnt51VR_Lnym7Zoxn8e5ltlLa1GMvN00Is1qHJ4H8GT89kVGe5fEWAkDwq0acjfouEJxfY_gQVgXEt-Q2JH59arGo8F2W-qokCNjx205Ron_Io9k0bWUDZT8UpM1dOERRdiise8DneWgPAkqFOebxxYP1Baf4ZegBzAzYXyhvxFLNMcjwAv5K6O3BUavJaoGdj9OoMfPmo8o7z5T5A-aZH_VcYRaSapUzMfWZ43CfyrQ9EmamAclKgSeKasd54RM_Fqy14qQvvWgf_O08WionqK1rUyboAA3WgD9jmbSzpdBRHsyGHJqdreDKBEF5GDW8_AZtg3lxNJsBFTmbAkIKTkgme09SqaIhSwg-bkJHMaNnpsW85ErLHhb0dg1ArX1oaRHREEVlr1YWqG60aXFo6NQyUcqQf0xOSSapX93Pxhm0K95S0jMR0-7LWB2-UgJybMO9ilNy2N_XTaE099-T3RZODMhZJKOOMwSTlTRS8xNBRhX-8lmWf-LCkCTbhBXeMtCQWESS7IWpmoWr43SmFzBsSy0OA_yXlQD6joIWFBUOxtowQgUDEQ3KvLKGUYagAEN4dSrLRQjn7zyV6xVBw
+
+### Register
+POST {{SurveyMaker.API_HostAddress}}/Register
+Accept: application/json
+Content-Type: application/json
+{
+  "email": "email@email.com",
+  "firstName": "TestName",
+  "lastName": "TestLastName",
+  "password": "MyPassword123.",
+  "phoneNumber": "1234567"
+}
+
+### Login
+# @name loginResponse
+POST {{SurveyMaker.API_HostAddress}}/Login
+Accept: application/json
+Content-Type: application/json
+{
+  "email": "email@email.com",
+  "password": "MyPassword123."
+}
+
+### Public test endpoint
+GET {{SurveyMaker.API_HostAddress}}/Test/Public
+Accept: application/json
+
+### Private test endpoint
+GET {{SurveyMaker.API_HostAddress}}/Test/Private
+Authorization: Bearer {{AccessToken}}
+Accept: application/json
+
+  
+### Create Survey
+POST {{SurveyMaker.API_HostAddress}}/Survey
+Authorization: Bearer {{AccessToken}}
+Content-Type: application/json
+
+{
+  "title": "Customer Satisfaction Survey",
+  "startsAt": "2025-02-01T10:00:00Z",
+  "expiresAt": "2025-03-01T23:59:59Z",
+  "allowAnonymousVotes": true,
+  "questions": [
+    {
+      "title": "How satisfied are you with our service?",
+      "maxSelections": 1,
+      "type": "SingleChoice",
+      "options": [
+        { "text": "Very Satisfied" },
+        { "text": "Satisfied" },
+        { "text": "Neutral" },
+        { "text": "Dissatisfied" },
+        { "text": "Very Dissatisfied" }
+      ]
+    },
+    {
+      "title": "Which features do you like the most? (Select up to 2)",
+      "maxSelections": 2,
+      "type": "MultipleChoice",
+      "options": [
+        { "text": "Fast Delivery" },
+        { "text": "Customer Support" },
+        { "text": "Affordable Prices" },
+        { "text": "Quality Products" }
+      ]
+    },
+    {
+      "title": "This was useful?",
+      "maxSelections": 2,
+      "type": "YesNo",
+      "options": [
+        { "text": "Yes, it was" },
+        { "text": "No, it wasn't" }
+      ]
+    }
+  ]
+}
+
+###
