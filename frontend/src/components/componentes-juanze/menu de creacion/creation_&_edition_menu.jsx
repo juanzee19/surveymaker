@@ -5,11 +5,12 @@ import { useState } from 'react';
 
 function CreateSurvey() {
   const navigate = useNavigate();
+  const [title, setTitle] = useState('New Survey'); // Nombre de la encuesta
   const [items, setItems] = useState([]);
-  const [visibility, setVisibility] = useState([]); // Estado para la visibilidad
-  const [timeLimit, setTimeLimit] = useState(0); // Estado para el tiempo límite
+  const [visibility, setVisibility] = useState([]);
+  const [timeLimit, setTimeLimit] = useState(0);
+  const token = "CfDJ8CQYFlLC6ABMj9CvBnphXzgcOWT17OajeJKGW6Uw1Cp--JVtLFVNnp4arVb2ykVFTtcZdzhxcLEY0OyWYeOVOWVDdcvbjKBChJfgKQCX60PBaBgTHNl1T-Xk50FPWXFE6A3OxZnPTQ3lIDrJhuMkBFojobp95lF3wgRABI6g15j4cL-XdDOee5l4W8vmsTSgaTFo6CY4QuObhEUdGmH70HVRQgVAXTFpaPeiNa9bLyVzUbItYugcNHOcCbeAPgdVWBcJu9z4uMKEKStiI9dwNCiHJTmTggnoROQ6Ox2Zr9XKhrSXvPmQPATvuFlhRTlLPSi9c_En--yIFzgVnpiaw8jRWdrYywdttuLw7pNNZZD5Nho9I4ww74w--g6QlFGSkmZ9gy0rp1s3SY4jvkzOs9HMMHezMFEl6NjIxaZDgF5avJLCohpOeDcP32COMcGYAU343nCipwQXWlPk602L3eT79F0gxi4hFj1WHJYiDoRTgZuczx2MTFskoSoQnYJg-Dz9Ota8wl34W6yWmj7At2XI5oA9t6lOEWtI9acjKBoKZpH30qf07IHcwBezAiVs7MTPBgIGTbP2dxdYHDfiU7zaIBGjFy9NAGi2L7bD9snDr40CfFMWSNzr-C7Xs-n9Zzr0MesJcPd3jnnWq6BFi2tcYZhGB35OyO_pKH23SzMssYRN0GjOLm3bJatEL6ViebG2y6-law-lgsuzBYxE30Y"; // Reemplázalo con tu token
 
-  // Agregar nueva pregunta
   const handleAddItem = () => {
     setItems([
       ...items,
@@ -17,7 +18,6 @@ function CreateSurvey() {
     ]);
   };
 
-  // Manejar cambios en preguntas u opciones
   const handleInputChange = (id, values) => {
     setItems(items.map(item =>
       item.id === id
@@ -26,16 +26,59 @@ function CreateSurvey() {
     ));
   };
 
-  // Eliminar una pregunta
   const handleRemoveItem = (id) => {
     setItems(items.filter(item => item.id !== id));
   };
 
-  // Manejar cambio de visibilidad
   const handleVisibilityChange = (option) => {
     setVisibility(prev =>
       prev.includes(option) ? prev.filter(v => v !== option) : [...prev, option]
     );
+  };
+
+  const handleSubmit = async () => {
+    const surveyData = {
+      title: title,
+      type: "TIME",
+      expiresAt: timeLimit > 0 ? new Date(Date.now() + timeLimit * 60000).toISOString() : null,
+      startsAt: new Date().toISOString(),
+      allowAnonymousVotes: visibility.includes("Publico"),
+      votesAmountRequiredToFinish: null,
+      questions: items.map((item, index) => ({
+        id: index + 1,
+        title: item.title,
+        type: "SingleChoice",
+        maxSelections: 1,
+        options: item.options.map((option, optIndex) => ({
+          id: optIndex + 1,
+          text: option.text
+        }))
+      }))
+    };
+
+    try {
+      const response = await fetch('https://surveymaker-53d73b4bd329.herokuapp.com/survey', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(surveyData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al enviar la encuesta');
+      }
+
+      const data = await response.json();
+      console.log('Encuesta creada:', data);
+      alert('Encuesta enviada con éxito');
+
+      navigate('/'); // Redirigir tras el éxito
+    } catch (error) {
+      console.error(error);
+      alert('Hubo un error al enviar la encuesta');
+    }
   };
 
   return (
@@ -47,16 +90,16 @@ function CreateSurvey() {
             type="text"
             className="edit__survey__name"
             placeholder="New Survey"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
 
           <div className="main">
             <div className="items__and__buttons">
-              {/* Botón para agregar una nueva pregunta */}
               <button onClick={handleAddItem} className="create__new" title="Crear un nuevo item">
                 New item +
               </button>
 
-              {/* Lista de preguntas creadas */}
               <ol className="created__surveys">
                 {items.map((item) => (
                   <SurveyItem
@@ -68,23 +111,13 @@ function CreateSurvey() {
                 ))}
               </ol>
 
-              {/* Configuración de tiempo */}
               <div className="set__time">
-                <svg className="watch" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                  <path
-                    d="M24 18V24L27 27M33.02 34.7L32.32 42.36C32.2299 43.3573 31.769 44.2845 31.0284 44.9584C30.2878 45.6324 29.3213 46.004 28.32 46H19.66C18.6587 46.004 17.6922 45.6324 16.9516 44.9584C16.211 44.2845 15.7501 43.3573 15.66 42.36L14.96 34.7M14.98 13.3L15.68 5.63997C15.7698 4.64613 16.2279 3.72174 16.9642 3.04828C17.7006 2.37481 18.6621 2.00091 19.66 1.99997H28.36C29.3613 1.99591 30.3278 2.36757 31.0684 3.04152C31.809 3.71547 32.2699 4.64268 32.36 5.63997L33.06 13.3M38 24C38 31.732 31.732 38 24 38C16.268 38 10 31.732 10 24C10 16.268 16.268 9.99997 24 9.99997C31.732 9.99997 38 16.268 38 24Z"
-                    stroke="#1E1E1E"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
                 <p className="p__time">set time</p>
                 <input
                   type="number"
                   min="0"
                   value={timeLimit}
-                  onChange={(e) => setTimeLimit(e.target.value)}
+                  onChange={(e) => setTimeLimit(Number(e.target.value))}
                   placeholder="0 = Sin límite"
                 />
               </div>
@@ -92,34 +125,31 @@ function CreateSurvey() {
 
             <div className="separador"></div>
 
-            {/* Configuración de visibilidad */}
             <div className="visibilidad">
               <h2 className="title__vi">Visibilidad</h2>
               <p className="visi__p">¿Quién puede ver esta encuesta?</p>
-              <div className="h1__and__checkbox">
-                <ol className="visibilidad__list">
-                  <li className="visibilidad__item">
-                    Publico
-                    <input
-                      type="checkbox"
-                      checked={visibility.includes("Publico")}
-                      onChange={() => handleVisibilityChange("Publico")}
-                    />
-                  </li>
-                  
-                  <li className="visibilidad__item">
-                    Privado
-                    <input
-                      type="checkbox"
-                      checked={visibility.includes("Privado")}
-                      onChange={() => handleVisibilityChange("Privado")}
-                    />
-                  </li>
-                </ol>
-              </div>
+              <ol className="visibilidad__list">
+                <li className="visibilidad__item">
+                  Publico
+                  <input
+                    type="checkbox"
+                    checked={visibility.includes("Publico")}
+                    onChange={() => handleVisibilityChange("Publico")}
+                  />
+                </li>
+                
+                <li className="visibilidad__item">
+                  Privado
+                  <input
+                    type="checkbox"
+                    checked={visibility.includes("Privado")}
+                    onChange={() => handleVisibilityChange("Privado")}
+                  />
+                </li>
+              </ol>
             </div>
           </div>
-          <button className='todo__listo'>Todo Listo</button>
+          <button className='todo__listo' onClick={handleSubmit}>Todo Listo</button>
         </div>
       </section>
     </>
