@@ -1,10 +1,5 @@
 
 
-body{
-    margin: auto;
-    background-color: #DDD5DF;
-    font-family:sans-serif ;
-  }
   /*-------------------*/
   /* caja popup blanca */
   /*-------------------*/
@@ -14,7 +9,7 @@ body{
   .box-white{
     background-color:#ffffff ;
     width: 80vw;
-    height: 80vh;
+    height: fit-content;
     border-radius: 20px;
   }
   .main{
@@ -37,29 +32,16 @@ body{
     margin-top: 1vh;
     margin-left: 4vw;
     margin-bottom: 1vh;
-    font-size: 30px;
+    font-size: 25px;
     border-bottom:2px solid rgb(197, 197, 197);
     border-radius:5px ;
   }
   
-  .items__and__buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 0;
-    }
-    
-    
-  
-  
-  
-  
-  
+ 
+
   .create__new{
     background-color:rgb(220, 180, 218) ;
     width: 27vw;
-    padding: 10px;
     border: solid 15px #F3EDF7;
     border-radius: 16px;
     transition: all 1s ease;
@@ -84,13 +66,8 @@ body{
   .created__surveys{
     display: flex;
     flex-direction: column;
-    gap: 20px;
     width: 27vw;
-    padding: 15px 0 15px 0 ;
-    list-style:none;
-    
-    
-    
+    list-style:none; 
   }
   
   .item__survey{
@@ -98,13 +75,13 @@ body{
     justify-content: space-between;
     background-color: rgb(220, 180, 218);
     border-radius: 5px;
-    box-shadow:1px 1px 4px rgb(81, 80, 80) ;
+    box-shadow:1px 1px 4px rgb(81, 80, 80) ;  
     
   }
   .quit__item{
     background: none;
     border: none;
-    color:rgb(40, 40, 40);
+   
     font-size: 16px;
     cursor: pointer;
   
@@ -125,7 +102,7 @@ body{
     align-items: center;
     background-color: #F3EDF7;
     border-radius: 20px;
-    position: absolute;
+    
     top: 80%;
     box-shadow:1px 1px 4px rgb(81, 80, 80) ;
   }
