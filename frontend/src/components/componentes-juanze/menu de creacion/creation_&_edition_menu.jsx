@@ -126,6 +126,7 @@ function CreateSurvey() {
               </div>
             </div>
           </div>
+          <button className='todo__listo'>Todo Listo</button>
         </div>
       </section>
     </>

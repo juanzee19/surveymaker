@@ -234,6 +234,13 @@
     box-shadow: 0px 1px rgb(220, 180, 218); 
   }
 
+
+  button.todo__listo{
+    background-color:rgb(220, 180, 218) ;
+    width: 50%;
+    margin-left: 25%;
+
+  }
   
 
  
