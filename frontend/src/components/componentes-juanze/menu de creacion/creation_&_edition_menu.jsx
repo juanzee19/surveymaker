@@ -99,27 +99,20 @@ function CreateSurvey() {
               <div className="h1__and__checkbox">
                 <ol className="visibilidad__list">
                   <li className="visibilidad__item">
-                    Todos
+                    Publico
                     <input
                       type="checkbox"
-                      checked={visibility.includes("Todos")}
-                      onChange={() => handleVisibilityChange("Todos")}
+                      checked={visibility.includes("Publico")}
+                      onChange={() => handleVisibilityChange("Publico")}
                     />
                   </li>
+                  
                   <li className="visibilidad__item">
-                    URL
+                    Privado
                     <input
                       type="checkbox"
-                      checked={visibility.includes("URL")}
-                      onChange={() => handleVisibilityChange("URL")}
-                    />
-                  </li>
-                  <li className="visibilidad__item">
-                    Gmail
-                    <input
-                      type="checkbox"
-                      checked={visibility.includes("Gmail")}
-                      onChange={() => handleVisibilityChange("Gmail")}
+                      checked={visibility.includes("Privado")}
+                      onChange={() => handleVisibilityChange("Privado")}
                     />
                   </li>
                 </ol>
