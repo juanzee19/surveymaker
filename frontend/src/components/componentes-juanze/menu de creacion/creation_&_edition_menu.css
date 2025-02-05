@@ -78,12 +78,21 @@
   
   li.item__survey{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     background-color: rgb(220, 180, 218);
     border-radius: 5px;
     box-shadow:1px 1px 4px rgb(81, 80, 80) ;  
     
   }
+ input.input__li{
+  background-color: #e3d7d7;
+  width: 95%;
+  height: 90%;
+  border-radius: 22px;
+ border-bottom: 1px solid rgb(118, 89, 116);
+ }
+
   button.quit__item{
     width: 10px;
     background: none;
