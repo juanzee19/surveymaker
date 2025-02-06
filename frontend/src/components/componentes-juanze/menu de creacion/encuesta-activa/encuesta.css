@@ -3,9 +3,7 @@ body{
     background-color: #DDD5DF;
     font-family:sans-serif ;
   }
-  .white__box{
   
-  }
   .items__and__buttons{
     display: flex;
     flex-direction: column;
@@ -28,6 +26,4 @@ body{
     
   }
   
-  .item__survey{
-   
-  }
+

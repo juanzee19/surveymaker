@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import icon from "../assets/icon.png";
 import "./welcome.css";
 
-import './componentes-juanze/menu de creacion/encuesta-activa/encuesta.css'
+
 const CardSurvey = ( { number} ) => {
  
     return (
