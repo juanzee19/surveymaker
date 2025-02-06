@@ -75,7 +75,7 @@ function CreateSurvey() {
       console.log('Encuesta creada:', data);
       alert('Encuesta enviada con éxito');
 
-      navigate('/'); // Redirigir tras el éxito
+      navigate('/welcome'); // Redirigir tras el éxito
     } catch (error) {
       console.error(error);
       alert('Hubo un error al enviar la encuesta');

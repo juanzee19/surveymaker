@@ -116,35 +116,6 @@ main {
   cursor: pointer;
   max-width: 400px;
 }
-.survey-container p{
-  font-size: 1rem;
-}
-.options-container{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.op-bd{
-  padding: 0.5rem 0rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.border{
-  border-bottom: 1px solid grey;
-}
-.cnt-label{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap:0.8rem;
-}
-.cnt-label img{
-  width: 25px;
-}
-.cnt-label label{
-  font-size: 0.8rem;
-}
 
 @media (max-width: 1440px) {
   .welcome-container{
