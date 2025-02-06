@@ -9,8 +9,9 @@ function CreateSurvey() {
   const [items, setItems] = useState([]);
   const [visibility, setVisibility] = useState([]);
   const [timeLimit, setTimeLimit] = useState(0);
-  const token = "CfDJ8CQYFlLC6ABMj9CvBnphXzgcOWT17OajeJKGW6Uw1Cp--JVtLFVNnp4arVb2ykVFTtcZdzhxcLEY0OyWYeOVOWVDdcvbjKBChJfgKQCX60PBaBgTHNl1T-Xk50FPWXFE6A3OxZnPTQ3lIDrJhuMkBFojobp95lF3wgRABI6g15j4cL-XdDOee5l4W8vmsTSgaTFo6CY4QuObhEUdGmH70HVRQgVAXTFpaPeiNa9bLyVzUbItYugcNHOcCbeAPgdVWBcJu9z4uMKEKStiI9dwNCiHJTmTggnoROQ6Ox2Zr9XKhrSXvPmQPATvuFlhRTlLPSi9c_En--yIFzgVnpiaw8jRWdrYywdttuLw7pNNZZD5Nho9I4ww74w--g6QlFGSkmZ9gy0rp1s3SY4jvkzOs9HMMHezMFEl6NjIxaZDgF5avJLCohpOeDcP32COMcGYAU343nCipwQXWlPk602L3eT79F0gxi4hFj1WHJYiDoRTgZuczx2MTFskoSoQnYJg-Dz9Ota8wl34W6yWmj7At2XI5oA9t6lOEWtI9acjKBoKZpH30qf07IHcwBezAiVs7MTPBgIGTbP2dxdYHDfiU7zaIBGjFy9NAGi2L7bD9snDr40CfFMWSNzr-C7Xs-n9Zzr0MesJcPd3jnnWq6BFi2tcYZhGB35OyO_pKH23SzMssYRN0GjOLm3bJatEL6ViebG2y6-law-lgsuzBYxE30Y"; // Reemplázalo con tu token
+  const token =  localStorage.getItem("token"); //" // Reemplázalo con tu token
 
+  
   const handleAddItem = () => {
     setItems([
       ...items,
