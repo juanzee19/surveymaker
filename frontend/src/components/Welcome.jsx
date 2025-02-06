@@ -20,13 +20,13 @@ const Welcome = () => {
         }
         axios.get("https://surveymaker-53d73b4bd329.herokuapp.com/Test/Private", {
                 headers: { Authorization: `Bearer ${token}` }, // Enviar el token
-            })
-            .then((response) => {
+        })
+        .then((response) => {
                 setData(response.data); // Guardar la info
-            })
-            .catch((error) => {
+        })
+        .catch((error) => {
                 console.error("Error:", error);
-            });
+        });
     }, [navigate]);
     // Obtener el correo almacenado
     const userEmail = localStorage.getItem("userEmail");
@@ -51,7 +51,6 @@ const Welcome = () => {
                     <div className="menu">
                         <button onClick={()=> navigate('/create-survey')} className="btn-menu">Crear nueva encuesta</button>
                         <button className="btn-menu">Encuestas activas</button>
-                        <button className="btn-menu">Historial</button>
                     </div>
                     <div className="cnt-btn-logout">
                         <button className="btn-menu btn-logout" onClick={handleLogout}>Cerrar sesión</button>
@@ -60,14 +59,14 @@ const Welcome = () => {
             </aside>
             <main>
                 <div className="cnt-survey">
+                    <CardSurvey 
+                        title="Encuesta 1"
+                        ques1="¿Cómo va tu dia?"
+                        ques2="¿Qué te gustaria comer hoy?"
+                        ques3="¿Te gusta jugar al LOL?"
+                        tiempo="1 hora"
+                    />
                     
-                    <CardSurvey number="1" />
-                    <CardSurvey number="2"/>
-                    <CardSurvey number="3"/>
-                    <CardSurvey number="4"/>
-                    <CardSurvey number="5"/>
-                    <CardSurvey number="6"/>
-                    <CardSurvey number="7"/>
                 </div>
             </main>
         </div>
