@@ -4,14 +4,7 @@ body{
     font-family:sans-serif ;
   }
   .white__box{
-    margin: auto;
-    text-align: center;
-    background-color:#ffffff ;
-    width: 45vw;
-    height: 85vh;
-    border-radius:22px ;
-    text-decoration: underline;
-    
+  
   }
   .items__and__buttons{
     display: flex;
@@ -36,11 +29,5 @@ body{
   }
   
   .item__survey{
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(220, 180, 218);
-    border-radius: 5px;
-    padding:30px 12px 30px 12px;
-    box-shadow:1px 1px 4px rgb(81, 80, 80) ;
-    
+   
   }

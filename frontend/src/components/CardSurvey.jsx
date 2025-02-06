@@ -2,62 +2,39 @@ import React, { useState } from 'react';
 import icon from "../assets/icon.png";
 import "./welcome.css";
 
+import './componentes-juanze/menu de creacion/encuesta-activa/encuesta.css'
 const CardSurvey = ( { number} ) => {
-    const [selectedOptions, setSelectedOptions] = useState([]);
-
-    const handleOptionChange = (option) => {
-        if (selectedOptions.includes(option)) {
-        setSelectedOptions(selectedOptions.filter((o) => o !== option));
-        } else {
-        setSelectedOptions([...selectedOptions, option]);
-        }
-    };
+ 
     return (
             <div className="survey-container">
-            <h2>Encuesta {number}</h2>
-            <p>¿Quién puede participar en esta encuesta?</p>
-            <div className="options-container">
-                <div className='op-bd border'>
-                    <div className='cnt-label'>
-                        <img src={icon} />
-                        <label htmlFor="todos">Todos</label>
-                    </div>
-                    <input
-                        type="checkbox"
-                        id="todos"
-                        value="Todos"
-                        checked={selectedOptions.includes('Todos')}
-                        onChange={() => handleOptionChange('Todos')}
-                    />
-                </div>
-                <div className='op-bd border'>
-                    <div className='cnt-label'>
-                        <img src={icon} />
-                        <label htmlFor="url">URL</label>
-                    </div>
-                    <input
-                        type="checkbox"
-                        id="url"
-                        value="URL"
-                        checked={selectedOptions.includes('URL')}
-                        onChange={() => handleOptionChange('URL')}
-                    />
-                </div>
-                <div className='op-bd'>
-                    <div className='cnt-label'>
-                        <img src={icon} />
-                        <label htmlFor="email">Invitados por Email</label>
-                    </div>
-                    
-                    <input
-                        type="checkbox"
-                        id="email"
-                        value="Invitados por Email"
-                        checked={selectedOptions.includes('Invitados por Email')}
-                        onChange={() => handleOptionChange('Invitados por Email')}
-                    />
-                </div>
-            </div>
+
+<section className='box__father'>
+
+<div className='white__box '>
+  <h1>Ejemplo de encuesta</h1>
+  <div className='items__and__buttons' >
+  <ol className='created__surveys'>
+        <li className='item__survey'> 
+          coca cola           
+         
+        </li>
+        <li className='item__survey'>
+          coca cola que se yo cualquier cosa
+           
+        </li>
+        
+        <li className='item__survey'>
+          coca cola
+         
+        </li>        
+      </ol>
+    </div>
+    <p>tiempo restante 2d 13H</p>
+
+</div>
+
+</section> 
+           
         </div>
     )
 }
