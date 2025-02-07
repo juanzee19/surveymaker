@@ -53,7 +53,6 @@ const Welcome = () => {
                 <nav>
                     <div className="menu">
                         <button onClick={() => navigate('/create-survey')} className="btn-menu">Crear nueva encuesta</button>
-                        <button className="btn-menu">Encuestas activas</button>
                     </div>
                     <div className="cnt-btn-logout">
                         <button className="btn-menu btn-logout" onClick={handleLogout}>Cerrar sesión</button>
