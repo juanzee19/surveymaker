@@ -6,7 +6,7 @@ body{
   .white__box__survey{
     margin: auto;
     text-align: center;
-    background-color:#ffffff ;
+    background-color:#ffffff9d ;
     width: 45vw;
     height: 85vh;
     border-radius:22px ;
@@ -38,6 +38,7 @@ body{
   .item__survey_1{
     display: flex;
     justify-content: space-between;
+  
     background-color: rgb(220, 180, 218);
     border-radius: 5px;
     padding:30px 12px 30px 12px;
