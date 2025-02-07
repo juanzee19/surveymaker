@@ -20,7 +20,7 @@ const CardSurvey = ({ title, questions, tiempo, onClick }) => {
                             )}
                         </ul>
                     </div>
-                    <p>Tiempo restante: {tiempo}</p>
+                    <p>{tiempo}</p>
                 </div>
             </section>
         </div>

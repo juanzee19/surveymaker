@@ -66,7 +66,7 @@ const Welcome = () => {
                         <SurveyClick 
                             title={selectedSurvey.title} 
                             questions={selectedSurvey.questions || []}
-                            tiempo={selectedSurvey.expiresAt ? `Expira en ${new Date(selectedSurvey.expiresAt).toLocaleString()}` : "Sin límite"}
+                            tiempo={selectedSurvey.expiresAt ? `Fecha de creación: ${new Date(selectedSurvey.expiresAt).toLocaleString()}` : "-"}
                             onClose={() => setSelectedSurvey(null)} // Permite volver atrás
                         />
                     ) : (
@@ -76,7 +76,7 @@ const Welcome = () => {
                                     key={survey.id} 
                                     title={survey.title} 
                                     questions={survey.questions || []}
-                                    tiempo={survey.expiresAt ? `Expira en ${new Date(survey.expiresAt).toLocaleString()}` : "Sin límite"}
+                                    tiempo={survey.expiresAt ? `Fecha de creación: ${new Date(survey.expiresAt).toLocaleString()}` : "-"}
                                     onClick={() => setSelectedSurvey(survey)} // Maneja el clic en la card
                                 />
                             ))
