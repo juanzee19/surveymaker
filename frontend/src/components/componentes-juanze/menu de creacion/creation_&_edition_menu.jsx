@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function CreateSurvey() {
   const navigate = useNavigate();
-  const [title, setTitle] = useState('New Survey'); // Nombre de la encuesta
+  const [title, setTitle] = useState(''); // Nombre de la encuesta
   const [items, setItems] = useState([]);
   const [visibility, setVisibility] = useState([]);
   const [timeLimit, setTimeLimit] = useState(0);
@@ -90,7 +90,7 @@ function CreateSurvey() {
           <input
             type="text"
             className="edit__survey__name"
-            placeholder="New Survey"
+            placeholder="Título nueva encuesta"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -98,7 +98,7 @@ function CreateSurvey() {
           <div className="main">
             <div className="items__and__buttons">
               <button onClick={handleAddItem} className="create__new" title="Crear un nuevo item">
-                New item +
+              Agregar Item
               </button>
 
               <ol className="created__surveys">
@@ -113,7 +113,7 @@ function CreateSurvey() {
               </ol>
 
               <div className="set__time">
-                <p className="p__time">set time</p>
+                <p className="p__time">Tiempo</p>
                 <input
                   type="number"
                   min="0"
@@ -150,7 +150,9 @@ function CreateSurvey() {
               </ol>
             </div>
           </div>
-          <button className='todo__listo' onClick={handleSubmit}>Todo Listo</button>
+          <div className="cnt-btn-tl">
+            <button className='todo__listo' onClick={handleSubmit}>Crear encuesta</button>
+          </div>
         </div>
       </section>
     </>

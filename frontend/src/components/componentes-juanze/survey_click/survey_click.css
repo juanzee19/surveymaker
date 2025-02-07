@@ -9,7 +9,8 @@ body{
     align-items:normal;
     background-color: white; 
     width: 45vw;
-    height: 85vh;
+    height: fit-content;
+    padding: 1.2rem;
     border-radius:22px ;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
     
@@ -18,10 +19,6 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-  
-    
-    
-    
   }
 
   .created__surveys_1 {
@@ -30,10 +27,7 @@ body{
   list-style-type: none; /* Elimina los círculos */
   padding: 10px;
   width: 70%;
-  
-    
-   
-   
+  gap:1rem;
   }
   .item__survey_1 li{
     display: flex;
@@ -44,12 +38,8 @@ body{
     border-radius: 5px;
     padding:15px 6px 15px 6px;
     box-shadow:1px 1px 4px rgb(81, 80, 80) ;
-   
-
-    
   }
   .item__survey_1 li:hover{
-   
     background-color: rgb(220, 180, 218)
   }
 
@@ -57,9 +47,13 @@ body{
     width: 15vw;
     background-color: rgb(220, 180, 218);
   }
-
-
   button.btn-back:hover{
     width: 17vw;
     background-color: rgb(230, 135, 225);
+  }
+
+  .gap-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }

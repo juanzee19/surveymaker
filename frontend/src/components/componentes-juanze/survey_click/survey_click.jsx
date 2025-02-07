@@ -16,7 +16,7 @@ const SurveyClick = ({ title, questions, tiempo, onClose }) => {
                                 questions.map((question, index) => (
                                     <li key={index} className='item__survey_1'>
                                         <h3>* {question.title} *</h3>
-                                        <ul>
+                                        <ul className="gap-item">
                                             {question.options && question.options.length > 0 ? (
                                                 question.options.map((option, optionIndex) => (
                                                     <li key={optionIndex}>{option.text} <input type="checkbox" /></li>

@@ -1,28 +1,25 @@
 body{
-    margin: 0;
-    background-color: #DDD5DF;
-    font-family:sans-serif ;
-  }
-  .white__box{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+  margin: 0;
+  background-color: #DDD5DF;
+  font-family:sans-serif ;
 }
-  .items__and__buttons{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .created__surveys{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 27vw;
-    padding: 15px 0 15px 0 ;
-    list-style:none;
-  }
-  
+.white__box{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.items__and__buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.created__surveys{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px 0 15px 0 ;
+  list-style:none;
+}
 
