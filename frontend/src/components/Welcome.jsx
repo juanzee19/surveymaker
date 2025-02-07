@@ -3,39 +3,38 @@ import { useNavigate } from "react-router-dom";
 import avatar from "../assets/avatar.png";
 import CardSurvey from "./CardSurvey";
 import axios from "axios";
-import './welcome.css';
+import "./welcome.css";
 
 const Welcome = () => {
     const navigate = useNavigate();
-    const [data, setData] = useState(null);
+    const [surveys, setSurveys] = useState([]);
 
     useEffect(() => {
-        
-        const userEmail = localStorage.getItem("userEmail"); // Verificar si hay un email en el localStorage
-        const token = localStorage.getItem("token"); // Obtener el token
-
+        const token = localStorage.getItem("token");
         if (!token) {
-            navigate("/login"); // Si no hay token, redirigir al login
+            navigate("/login");
             return;
         }
-        axios.get("https://surveymaker-53d73b4bd329.herokuapp.com/Test/Private", {
-                headers: { Authorization: `Bearer ${token}` }, // Enviar el token
+
+        axios.post("https://surveymaker-53d73b4bd329.herokuapp.com/survey/list/private", {
+            withQuestions: true,
+            withOptions: true
+        }, {
+            headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) => {
-                setData(response.data); // Guardar la info
+            console.log("Encuestas recibidas:", response.data); // 📌 Verifica qué datos llegan
+            setSurveys(response.data);
         })
         .catch((error) => {
-                console.error("Error:", error);
+            console.error("Error al obtener encuestas:", error);
         });
     }, [navigate]);
-    // Obtener el correo almacenado
-    const userEmail = localStorage.getItem("userEmail");
-    console.log(data);
 
     const handleLogout = () => {
-        localStorage.removeItem("token") // Eliminar el token
-      navigate("/login"); // Redirigir al login
-  };
+        localStorage.removeItem("token");
+        navigate("/login");
+    };
 
     return (
         <div className="welcome-container">            
@@ -44,12 +43,12 @@ const Welcome = () => {
                     <div>
                         <img className="avatar" src={avatar} alt="Avatar" />
                         <h2>Bienvenido/a,</h2>
-                        <h3 className="user-name">{userEmail}</h3>
+                        <h3 className="user-name">{localStorage.getItem("userEmail")}</h3>
                     </div>
                 </header>
                 <nav>
                     <div className="menu">
-                        <button onClick={()=> navigate('/create-survey')} className="btn-menu">Crear nueva encuesta</button>
+                        <button onClick={() => navigate('/create-survey')} className="btn-menu">Crear nueva encuesta</button>
                         <button className="btn-menu">Encuestas activas</button>
                     </div>
                     <div className="cnt-btn-logout">
@@ -59,14 +58,18 @@ const Welcome = () => {
             </aside>
             <main>
                 <div className="cnt-survey">
-                    <CardSurvey 
-                        title="Encuesta 1"
-                        ques1="¿Cómo va tu dia?"
-                        ques2="¿Qué te gustaria comer hoy?"
-                        ques3="¿Te gusta jugar al LOL?"
-                        tiempo="1 hora"
-                    />
-                    
+                    {surveys.length > 0 ? (
+                        surveys.map((survey) => (
+                            <CardSurvey 
+                                key={survey.id} 
+                                title={survey.title} 
+                                questions={survey.questions || []} // Enviar todas las preguntas
+                                tiempo={survey.expiresAt ? `Expira en ${new Date(survey.expiresAt).toLocaleString()}` : "Sin límite"}
+                            />
+                        ))
+                    ) : (
+                        <p>No hay encuestas disponibles</p>
+                    )}
                 </div>
             </main>
         </div>
