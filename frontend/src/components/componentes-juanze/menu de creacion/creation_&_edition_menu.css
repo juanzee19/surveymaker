@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    padding: 1rem;
   }
   /*-------------------*/
   /* caja popup blanca */
@@ -52,6 +53,7 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+  
   .cnt-btn-tl{
     width: 50%;
     display: flex;
@@ -263,6 +265,13 @@ li.survey-item div {
   input{
     cursor: pointer;
   }
+.sarasa{
+  display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+}
+
   /*-------------------*/
   /*visibilidad*/
   /*-------------------*/

@@ -126,32 +126,35 @@ function CreateSurvey() {
 
             <div className="separador"></div>
 
-            <div className="visibilidad">
-              <h2 className="title__vi">Visibilidad</h2>
-              <p className="visi__p">¿Quién puede ver esta encuesta?</p>
-              <ol className="visibilidad__list">
-                <li className="visibilidad__item">
-                  Publico
-                  <input
-                    type="checkbox"
-                    checked={visibility.includes("Publico")}
-                    onChange={() => handleVisibilityChange("Publico")}
-                  />
-                </li>
-                
-                <li className="visibilidad__item">
-                  Privado
-                  <input
-                    type="checkbox"
-                    checked={visibility.includes("Privado")}
-                    onChange={() => handleVisibilityChange("Privado")}
-                  />
-                </li>
-              </ol>
+            <div className="sarasa">
+              <div className="visibilidad">
+                <h2 className="title__vi">Visibilidad</h2>
+                <p className="visi__p">¿Quién puede ver esta encuesta?</p>
+                <ol className="visibilidad__list">
+                  <li className="visibilidad__item">
+                    Publico
+                    <input
+                      type="checkbox"
+                      checked={visibility.includes("Publico")}
+                      onChange={() => handleVisibilityChange("Publico")}
+                    />
+                  </li>
+                  
+                  <li className="visibilidad__item">
+                    Privado
+                    <input
+                      type="checkbox"
+                      checked={visibility.includes("Privado")}
+                      onChange={() => handleVisibilityChange("Privado")}
+                    />
+                  </li>
+                </ol>
+              </div>
+
+              <div className="cnt-btn-tl">
+                <button className='todo__listo' onClick={handleSubmit}>Crear encuesta</button>
+              </div>
             </div>
-          </div>
-          <div className="cnt-btn-tl">
-            <button className='todo__listo' onClick={handleSubmit}>Crear encuesta</button>
           </div>
         </div>
       </section>
