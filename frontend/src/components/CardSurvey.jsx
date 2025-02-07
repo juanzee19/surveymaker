@@ -7,8 +7,9 @@ const CardSurvey = ({ title, questions, tiempo, onClick }) => {
             <section className="box__father">
                 <div className="white__box">
                     <h1 className="card_title">{title}</h1>
+                    <p className="Items_p">Items</p>
                     <div className="items__and__buttons">
-                        <p className="Items_p">Items</p>
+                        
                         <ul className="created__surveys">
                             {questions.length > 0 ? (
                                 questions.map((q, index) => (
