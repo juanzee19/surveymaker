@@ -8,6 +8,8 @@ const SurveyClick = ({ title, questions, tiempo, onClose }) => {
                 <div className='white__box__survey'>
                     <h1>{title}</h1>
                     <div className='items__and__buttons_survey'>
+                      <p>*marque una casilla</p>
+                      
                         <ol className='created__surveys_1'>
                             {questions.length > 0 ? (
                                 questions.map((question, index) => (
@@ -16,7 +18,7 @@ const SurveyClick = ({ title, questions, tiempo, onClose }) => {
                                         <ul>
                                             {question.options && question.options.length > 0 ? (
                                                 question.options.map((option, optionIndex) => (
-                                                    <li key={optionIndex}>{option.text}</li>
+                                                    <li key={optionIndex}>{option.text} <input type="checkbox" /></li>
                                                 ))
                                             ) : (
                                                 <li>No hay opciones disponibles</li>
@@ -30,7 +32,7 @@ const SurveyClick = ({ title, questions, tiempo, onClose }) => {
                         </ol>
                     </div>
                     <p>{tiempo}</p>
-                    <button onClick={onClose} className="btn-menu">Volver</button>
+                    <button onClick={onClose} className="btn-back">Volver</button>
                 </div>
             </section> 
         </>
