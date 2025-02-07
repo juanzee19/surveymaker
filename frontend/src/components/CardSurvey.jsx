@@ -1,9 +1,9 @@
 import React from "react";
 import "./welcome.css";
 
-const CardSurvey = ({ title, questions, tiempo }) => {
+const CardSurvey = ({ title, questions, tiempo, onClick }) => {
     return (
-        <div className="survey-container">
+        <div className="survey-container" onClick={onClick} style={{ cursor: "pointer" }}>
             <section className="box__father">
                 <div className="white__box">
                     <h1>{title}</h1>

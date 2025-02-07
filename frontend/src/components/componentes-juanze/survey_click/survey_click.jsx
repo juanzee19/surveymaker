@@ -1,41 +1,29 @@
 import React from 'react';
-import '../survey_click/survey_click.css'
-function Survey_click() {
-  
+import '../survey_click/survey_click.css';
 
+const SurveyClick = ({ title, questions, tiempo, onClose }) => {
     return (
-      <>
-      
-      <section className='box_survey'>
+        <>
+            <section className='box_survey'>
+                <div className='white__box__survey'>
+                    <h1>{title}</h1>
+                    <div className='items__and__buttons_survey'>
+                        <ol className='created__surveys_1'>
+                            {questions.length > 0 ? (
+                                questions.map((q, index) => (
+                                    <li key={index} className='item__survey_1'>{q.title}</li>
+                                ))
+                            ) : (
+                                <li className='item__survey_1'>No hay preguntas</li>
+                            )}
+                        </ol>
+                    </div>
+                    <p>{tiempo}</p>
+                    <button onClick={onClose} className="btn-menu">Volver</button>
+                </div>
+            </section> 
+        </>
+    );
+};
 
-        <div className='white__box__survey '>
-          <h1>Ejemplo de encuesta</h1>
-          <div className='items__and__buttons_survey' >
-          <ol className='created__surveys_1'>
-                <li className='item__survey_1'> 
-                  coca cola           
-                 
-                </li>
-                <li className='item__survey_1'>
-                  coca cola que se yo cualquier cosa
-                  
-                </li>
-                
-                <li className='item__survey_1'>
-                  coca cola
-                  
-                </li>        
-              </ol>
-            </div>
-            <p>tiempo restante 2d 13H</p>
-  
-        </div>
-
-        </section> 
-     
-     </>
-   )
- }
- 
- export default Survey_click;
- 
+export default SurveyClick;

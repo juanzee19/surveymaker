@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import avatar from "../assets/avatar.png";
 import CardSurvey from "./CardSurvey";
+import SurveyClick from "./componentes-juanze/survey_click/survey_click"; // Importa el nuevo componente
 import axios from "axios";
 import "./welcome.css";
 
 const Welcome = () => {
     const navigate = useNavigate();
     const [surveys, setSurveys] = useState([]);
+    const [selectedSurvey, setSelectedSurvey] = useState(null); // Estado para la encuesta seleccionada
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -16,6 +18,8 @@ const Welcome = () => {
             return;
         }
 
+        console.log("Token almacenado:", token); // 📌 Verificar si el token existe
+
         axios.post("https://surveymaker-53d73b4bd329.herokuapp.com/survey/list/private", {
             withQuestions: true,
             withOptions: true
@@ -23,11 +27,11 @@ const Welcome = () => {
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) => {
-            console.log("Encuestas recibidas:", response.data); // 📌 Verifica qué datos llegan
+            console.log("Encuestas recibidas:", response.data);
             setSurveys(response.data);
         })
         .catch((error) => {
-            console.error("Error al obtener encuestas:", error);
+            console.error("Error al obtener encuestas:", error.response ? error.response.data : error.message);
         });
     }, [navigate]);
 
@@ -37,7 +41,7 @@ const Welcome = () => {
     };
 
     return (
-        <div className="welcome-container">            
+        <div className="welcome-container">
             <aside>
                 <header>
                     <div>
@@ -58,17 +62,27 @@ const Welcome = () => {
             </aside>
             <main>
                 <div className="cnt-survey">
-                    {surveys.length > 0 ? (
-                        surveys.map((survey) => (
-                            <CardSurvey 
-                                key={survey.id} 
-                                title={survey.title} 
-                                questions={survey.questions || []} // Enviar todas las preguntas
-                                tiempo={survey.expiresAt ? `Expira en ${new Date(survey.expiresAt).toLocaleString()}` : "Sin límite"}
-                            />
-                        ))
+                    {selectedSurvey ? (
+                        <SurveyClick 
+                            title={selectedSurvey.title} 
+                            questions={selectedSurvey.questions || []}
+                            tiempo={selectedSurvey.expiresAt ? `Expira en ${new Date(selectedSurvey.expiresAt).toLocaleString()}` : "Sin límite"}
+                            onClose={() => setSelectedSurvey(null)} // Permite volver atrás
+                        />
                     ) : (
-                        <p>No hay encuestas disponibles</p>
+                        surveys.length > 0 ? (
+                            surveys.map((survey) => (
+                                <CardSurvey 
+                                    key={survey.id} 
+                                    title={survey.title} 
+                                    questions={survey.questions || []}
+                                    tiempo={survey.expiresAt ? `Expira en ${new Date(survey.expiresAt).toLocaleString()}` : "Sin límite"}
+                                    onClick={() => setSelectedSurvey(survey)} // Maneja el clic en la card
+                                />
+                            ))
+                        ) : (
+                            <p>No hay encuestas disponibles</p>
+                        )
                     )}
                 </div>
             </main>
