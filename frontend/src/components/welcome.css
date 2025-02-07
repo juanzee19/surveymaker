@@ -107,6 +107,8 @@ main {
   
 }
 
+
+
 .Items_p {
   display: flex;
   justify-content: flex-start;
@@ -134,6 +136,7 @@ main {
   width: 100%;
   cursor: pointer;
   max-width: 400px;
+ 
 }
 .survey-container:hover {
   background-color: #dac6dd;
