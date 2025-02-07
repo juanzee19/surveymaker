@@ -37,12 +37,16 @@ body{
     justify-content: space-between;
     list-style-type: none; /* Elimina los círculos */
     width: 27vw;
-    background-color: rgb(220, 180, 218);
+     background-color: #dac6dd;
     border-radius: 5px;
     padding:15px 6px 15px 6px;
     box-shadow:1px 1px 4px rgb(81, 80, 80) ;
 
     
+  }
+  .item__survey_1 li:hover{
+   
+    background-color: rgb(220, 180, 218)
   }
 
   button.btn-back{

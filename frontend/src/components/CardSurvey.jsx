@@ -6,8 +6,9 @@ const CardSurvey = ({ title, questions, tiempo, onClick }) => {
         <div className="survey-container" onClick={onClick} style={{ cursor: "pointer" }}>
             <section className="box__father">
                 <div className="white__box">
-                    <h1>{title}</h1>
+                    <h1 className="card_title">{title}</h1>
                     <div className="items__and__buttons">
+                        <p className="Items_p">Items</p>
                         <ul className="created__surveys">
                             {questions.length > 0 ? (
                                 questions.map((q, index) => (
