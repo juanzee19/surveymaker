@@ -29,6 +29,9 @@ body{
   width: 70%;
   gap:1rem;
   }
+  .item__survey_1 h3{
+    margin-bottom: 10px;
+  }
   .item__survey_1 li{
     display: flex;
     justify-content: space-between;

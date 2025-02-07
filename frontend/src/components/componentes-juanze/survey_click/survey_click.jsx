@@ -6,16 +6,14 @@ const SurveyClick = ({ title, questions, tiempo, onClose }) => {
         <>
             <section className='box_survey'>
                 <div className='white__box__survey'>
-                    
                     <div className='items__and__buttons_survey'>
-                    <h1>{title}</h1>
-                      <p>*marque una casilla</p>
-                      
+                        <h1>{title}</h1>
+                        <p>*Por favor marque las casillas correspondientes</p>
                         <ol className='created__surveys_1'>
                             {questions.length > 0 ? (
                                 questions.map((question, index) => (
                                     <li key={index} className='item__survey_1'>
-                                        <h3>* {question.title} *</h3>
+                                        <h3>{question.title}*</h3>
                                         <ul className="gap-item">
                                             {question.options && question.options.length > 0 ? (
                                                 question.options.map((option, optionIndex) => (
@@ -32,9 +30,8 @@ const SurveyClick = ({ title, questions, tiempo, onClose }) => {
                             )}
                         </ol>
                         <p>{tiempo}</p>
-                    <button onClick={onClose} className="btn-back">Volver</button>
+                        <button onClick={onClose} className="btn-back">Volver</button>
                     </div>
-                    
                 </div>
             </section> 
         </>
